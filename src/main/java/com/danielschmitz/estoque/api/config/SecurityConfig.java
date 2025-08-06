@@ -2,12 +2,10 @@ package com.danielschmitz.estoque.api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -18,19 +16,16 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                // Desabilita a proteção CSRF. Como usaremos JWT (stateless), não precisamos
-                // dela.
-                .csrf(csrf -> csrf.disable())
-                // Define a política de sessão como STATELESS. A API não guardará estado.
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        http
                 .authorizeHttpRequests(authorize -> authorize
-                        // Permite POST nos endpoints /auth/login e /auth/register
-                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        // Qualquer outra requisição precisa de autenticação
+                        .requestMatchers("/login", "/auth/register", "/css/**", "/js/**", "/images/**").permitAll()
                         .anyRequest().authenticated())
-                .build();
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/login?error=true"));
+        return http.build();
     }
 
     @Bean
