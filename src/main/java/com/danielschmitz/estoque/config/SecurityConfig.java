@@ -26,6 +26,12 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/", true)
                         .failureUrl("/login?error=true")
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout") // URL que aciona o logout
+                        .logoutSuccessUrl("/login?logout") // Para onde redirecionar após o logout
+                        .invalidateHttpSession(true) // Invalida a sessão
+                        .deleteCookies("JSESSIONID") // Deleta o cookie da sessão
                 );
 
         return http.build();

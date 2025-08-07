@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -12,9 +13,16 @@
 </head>
 <body class="bg-gray-100">
 
-    <header class="bg-blue-600 text-white p-4 shadow-md">
+    <header class="bg-blue-600 text-white p-4 shadow-md flex justify-between">
         <div class="container mx-auto">
             <h1 class="text-2xl font-bold">Sistema de Estoque</h1>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Sair
+                </button>
+            </form>
         </div>
     </header>
 
