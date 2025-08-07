@@ -18,13 +18,16 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login", "/auth/register", "/css/**", "/js/**", "/images/**").permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/", "/login", "/register", "/auth/register", "/css/**", "/js/**").permitAll()
+                        .anyRequest().authenticated()
+                )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/", true)
-                        .failureUrl("/login?error=true"));
+                        .failureUrl("/login?error=true")
+                );
+
         return http.build();
     }
 
