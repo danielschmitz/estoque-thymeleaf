@@ -13,11 +13,16 @@
 </head>
 <body class="bg-gray-100">
 
-    <header class="bg-blue-600 text-white p-4 shadow-md flex justify-between">
+    <header class="bg-blue-600 text-white p-4 shadow-md flex justify-between gap-2">
         <div class="container mx-auto">
             <h1 class="text-2xl font-bold">Sistema de Estoque</h1>
         </div>
+        <a th:href="@{/admin}"
+           class="bg-blue-600 hover:bg-blue-700 inline-block align-baseline text-white py-2 px-4 rounded">
+            Admin
+        </a>
         <div sec:authorize="isAuthenticated()">
+
             <form th:action="@{/logout}" method="post">
                 <button type="submit" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Sair
@@ -26,7 +31,22 @@
         </div>
     </header>
 
-    <main class="container mx-auto p-4 my-6 bg-white rounded-lg shadow">
+    <div sec:authorize="isAuthenticated()" class="flex justify-center p-4 gap-2">
+        <a th:href="@{/users}"
+           class="bg-blue-600 hover:bg-blue-700 inline-block align-baseline text-white py-2 px-4 rounded">
+            Produtos
+        </a>
+        <a th:href="@{/users}"
+           class="bg-blue-600 hover:bg-blue-700 inline-block align-baseline text-white py-2 px-4 rounded">
+            Categorias
+        </a>
+        <a th:href="@{/users}"
+           class="bg-blue-600 hover:bg-blue-700 inline-block align-baseline text-white py-2 px-4 rounded">
+            Locais
+        </a>
+    </div>
+
+    <main class="container mx-auto p-4 my-1 bg-white rounded-lg shadow">
         <main layout:fragment="content">
             <!-- O conteúdo específico da página vai aqui -->
         </main>
