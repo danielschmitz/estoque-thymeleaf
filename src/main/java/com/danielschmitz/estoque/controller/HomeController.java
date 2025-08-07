@@ -1,4 +1,4 @@
-package com.danielschmitz.estoque.api.controller;
+package com.danielschmitz.estoque.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

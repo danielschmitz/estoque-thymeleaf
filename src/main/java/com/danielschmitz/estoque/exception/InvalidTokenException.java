@@ -1,4 +1,4 @@
-package com.danielschmitz.estoque.api.exception;
+package com.danielschmitz.estoque.exception;
 
 public class InvalidTokenException extends RuntimeException {
     public InvalidTokenException(String message) {

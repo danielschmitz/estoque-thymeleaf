@@ -1,4 +1,4 @@
-package com.danielschmitz.estoque.api.model;
+package com.danielschmitz.estoque.model;
 
 import java.util.Collection;
 import java.util.List;

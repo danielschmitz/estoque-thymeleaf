@@ -1,7 +1,7 @@
-package com.danielschmitz.estoque.api.config;
+package com.danielschmitz.estoque.config;
 
-import com.danielschmitz.estoque.api.model.User;
-import com.danielschmitz.estoque.api.repository.UserRepository;
+import com.danielschmitz.estoque.model.User;
+import com.danielschmitz.estoque.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;

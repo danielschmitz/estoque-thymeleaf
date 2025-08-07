@@ -1,4 +1,4 @@
-package com.danielschmitz.estoque.api.config;
+package com.danielschmitz.estoque.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

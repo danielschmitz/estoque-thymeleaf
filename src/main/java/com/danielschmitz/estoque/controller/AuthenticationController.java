@@ -1,7 +1,7 @@
-package com.danielschmitz.estoque.api.controller;
+package com.danielschmitz.estoque.controller;
 
-import com.danielschmitz.estoque.api.model.User;
-import com.danielschmitz.estoque.api.service.UserService;
+import com.danielschmitz.estoque.model.User;
+import com.danielschmitz.estoque.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

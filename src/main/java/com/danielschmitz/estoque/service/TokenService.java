@@ -1,4 +1,4 @@
-package com.danielschmitz.estoque.api.service;
+package com.danielschmitz.estoque.service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.danielschmitz.estoque.api.exception.InvalidTokenException;
-import com.danielschmitz.estoque.api.model.User;
+import com.danielschmitz.estoque.exception.InvalidTokenException;
+import com.danielschmitz.estoque.model.User;
 
 @Service
 public class TokenService {

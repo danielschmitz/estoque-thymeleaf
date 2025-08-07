@@ -1,7 +1,7 @@
-package com.danielschmitz.estoque.api.service;
+package com.danielschmitz.estoque.service;
 
-import com.danielschmitz.estoque.api.model.User;
-import com.danielschmitz.estoque.api.repository.UserRepository;
+import com.danielschmitz.estoque.model.User;
+import com.danielschmitz.estoque.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
