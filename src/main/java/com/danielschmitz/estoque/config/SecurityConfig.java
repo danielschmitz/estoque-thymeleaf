@@ -2,6 +2,7 @@ package com.danielschmitz.estoque.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,7 +19,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/", "/login", "/register", "/auth/register", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/css/**", "/js/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -36,6 +37,21 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                // Permite TODAS as requisições sem autenticação
+//                .authorizeHttpRequests(authorize -> authorize
+//                        .requestMatchers("/**").permitAll()
+//                )
+//                // Desabilita o formulário de login, já que não é mais necessário
+//                .formLogin(form -> form.disable())
+//                // Desabilita a proteção CSRF, que também não é necessária neste modo
+//                .csrf(csrf -> csrf.disable());
+//
+//        return http.build();
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
