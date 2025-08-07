@@ -10,6 +10,7 @@
     <title layout:title-pattern="$CONTENT_TITLE - Sistema de Estoque">Título Base</title>
 
     <link rel="stylesheet" th:href="@{/css/output.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-gray-100">
 
@@ -19,7 +20,7 @@
         </div>
         <a th:href="@{/admin}"
            class="bg-blue-600 hover:bg-blue-700 inline-block align-baseline text-white py-2 px-4 rounded">
-            Admin
+            <i class="fas fa-user"></i>
         </a>
         <div sec:authorize="isAuthenticated()">
 
