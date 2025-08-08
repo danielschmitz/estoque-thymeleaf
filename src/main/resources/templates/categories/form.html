@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}" lang="pt-br">
+<head>
+    <title th:text="${title}">Categoria</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 class="text-2xl font-semibold mb-4" th:text="${title}">Categoria</h2>
+
+    <div th:if="${errorMessage}"
+         class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <span class="block sm:inline" th:text="${errorMessage}"></span>
+    </div>
+
+    <form th:action="${category.id} != null ? @{'/categories/' + ${category.id}} : @{/categories}"
+          method="post"
+          class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md">
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nome</label>
+            <input id="name" name="name" type="text" required
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   th:value="${category.name}">
+        </div>
+
+        <div class="flex items-center gap-2">
+            <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                Salvar
+            </button>
+            <a th:href="@{/categories}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded">Cancelar</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>
