@@ -44,4 +44,20 @@ public class ProfileController {
         redirectAttributes.addFlashAttribute("successMessage", "Profile atualizado com sucesso");
         return "redirect:/";
     }
+
+    @PostMapping("/password")
+    public String handlePasswordSubmit(
+            @RequestParam String password,
+            RedirectAttributes redirectAttributes,
+            @AuthenticationPrincipal User user
+    ){
+        try {
+            userService.savePassword(user, password);
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            return "redirect:/profile";
+        }
+        redirectAttributes.addFlashAttribute("successMessage", "Senha atualizada com sucesso");
+        return "redirect:/";
+    }
 }
