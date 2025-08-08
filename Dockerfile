@@ -35,6 +35,7 @@ COPY --from=frontend-builder /app/src/main/resources/static/css/output.css ./src
 
 # Executa o build do Gradle para criar o JAR executável
 # A flag '-x test' pula a execução dos testes, o que é comum para builds em Docker
+RUN chmod +x ./gradlew
 RUN ./gradlew build -x test
 
 # ---
