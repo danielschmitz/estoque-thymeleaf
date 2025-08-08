@@ -1,0 +1,16 @@
+# Arquivos e pastas do Git
+.git
+.gitignore
+
+# Arquivos de build do Gradle
+.gradle
+build/
+
+# Dependências do Node.js (serão instaladas dentro do contêiner)
+node_modules/
+
+# Arquivos de log e de IDE
+*.log
+.idea/
+*.iml
+.vscode/
