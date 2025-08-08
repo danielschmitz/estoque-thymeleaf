@@ -25,4 +25,17 @@ public class UserService {
         User newUser = new User(null, user.getName(), user.getEmail(), encodedPassword);
         return userRepository.save(newUser);
     }
+
+    public User save(User user, String newName, String newEmail){
+
+        if (!user.getEmail().equals(newEmail)) {
+            if (userRepository.findByEmail(newEmail) != null) {
+                throw new RuntimeException("User with email " + newEmail + " already exists");
+            }
+        }
+        user.setEmail(newEmail);
+        user.setName(newName);
+        userRepository.save(user);
+        return user;
+    }
 }
