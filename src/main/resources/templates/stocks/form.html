@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}" lang="pt-br">
+<head>
+    <title>Novo Movimento de Estoque</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h2 class="text-2xl font-semibold mb-4" th:text="${title}">Novo Movimento de Estoque</h2>
+
+    <div th:if="${errorMessage}"
+         class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <span class="block sm:inline" th:text="${errorMessage}"></span>
+    </div>
+
+    <form th:action="@{/stocks}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="productId">Produto</label>
+            <select id="productId" name="productId" required
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="" disabled selected>Selecione</option>
+                <option th:each="p : ${products}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="locationId">Local</label>
+            <select id="locationId" name="locationId" required
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="" disabled selected>Selecione</option>
+                <option th:each="l : ${locations}" th:value="${l.id}" th:text="${l.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="entryDate">Data de Entrada</label>
+            <input id="entryDate" name="entryDate" type="date" required
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="expiryDate">Data de Validade</label>
+            <input id="expiryDate" name="expiryDate" type="date"
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="price">Preço</label>
+            <input id="price" name="price" type="number" step="0.01" min="0" required
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">Quantidade</label>
+            <input id="quantity" name="quantity" type="number" step="0.001" min="0.001" required
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="md:col-span-2">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="movementType">Tipo de Movimento</label>
+            <select id="movementType" name="movementType" required
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option th:each="mt : ${movementTypes}" th:value="${mt}" th:text="${mt}"></option>
+            </select>
+        </div>
+        <div class="md:col-span-2 flex gap-3">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">Salvar</button>
+            <a th:href="@{/stocks}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded">Cancelar</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>

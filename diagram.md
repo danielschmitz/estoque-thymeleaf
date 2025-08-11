@@ -32,3 +32,17 @@ Table users {
 
 // Relacionamentos
 Ref: products.category_id > categories.id
+
+Table stock {
+  id bigint [pk, increment]
+  product_id bigint [not null]
+  location_id bigint [not null]
+  entry_date date [not null]
+  expiry_date date
+  price decimal(19,2) [not null]
+  quantity decimal(19,3) [not null]
+  movement_type varchar [not null, note: 'IN/OUT']
+}
+
+Ref: stock.product_id > products.id
+Ref: stock.location_id > locations.id
