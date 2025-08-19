@@ -2,6 +2,7 @@ package com.danielschmitz.estoque.service;
 
 import com.danielschmitz.estoque.model.Category;
 import com.danielschmitz.estoque.model.Product;
+import com.danielschmitz.estoque.model.dto.CategoryProductCountDTO;
 import com.danielschmitz.estoque.repository.CategoryRepository;
 import com.danielschmitz.estoque.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,5 +85,9 @@ public class ProductService {
         if (categoryId == null) {
             throw new RuntimeException("A categoria é obrigatória");
         }
+    }
+
+    public List<CategoryProductCountDTO> countProductsByCategory() {
+        return productRepository.countProductsByCategory();
     }
 }

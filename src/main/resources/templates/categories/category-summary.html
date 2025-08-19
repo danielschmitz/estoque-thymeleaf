@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="summaryTable(categoryCounts)" class="bg-white p-6 rounded-lg shadow-md">
+    <h3 class="text-xl font-semibold mb-4">Produtos por Categoria</h3>
+
+    <!-- Se a lista estiver vazia, mostra uma mensagem -->
+    <div th:if="${#lists.isEmpty(categoryCounts)}">
+        <p class="text-gray-500">Nenhum produto cadastrado ainda.</p>
+    </div>
+
+    <!-- Se a lista não estiver vazia, mostra a tabela -->
+    <table th:unless="${#lists.isEmpty(categoryCounts)}" class="min-w-full bg-white">
+        <thead class="bg-gray-200">
+        <tr>
+            <th class="py-2 px-4 text-left">Categoria</th>
+            <th class="py-2 px-4 text-left">Quantidade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Itera sobre cada item da lista 'categoryCounts' -->
+        <tr th:each="item : ${categoryCounts}" class="border-b">
+            <td class="py-2 px-4" th:text="${item.categoryName}">Nome da Categoria</td>
+            <td class="py-2 px-4" th:text="${item.count}">0</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

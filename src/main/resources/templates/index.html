@@ -20,6 +20,13 @@
         <h2 class="text-2xl font-semibold mb-4">Página Inicial</h2>
         <p>Bem-vindo ao sistema de gerenciamento de estoque.</p>
         <p class="mt-4">Use a navegação para gerenciar os produtos.</p>
+
+        <div class="flex justify-center p-4 gap-2">
+            <div th:replace="~{categories/category-summary :: summaryTable(categoryCounts=${categoryCounts})}">
+                Carregando resumo de categorias...
+            </div>
+        </div>
+
     </section>
 
 </body>
